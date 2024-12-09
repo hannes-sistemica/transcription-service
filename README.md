@@ -31,17 +31,17 @@ A robust REST API service for audio transcription using OpenAI's Whisper model. 
 
 1. Clone the repository:
 ```bash
-git clone https://your-repository/whisper-api.git
-cd whisper-api
+git https://github.com/hannes-sistemica/transcription-service.git
+cd transcription-service
 ```
 
 2. Build the Docker image:
 ```bash
 # CPU version
-docker build -t whisper-api .
+docker build -t transcription-service .
 
 # GPU version (if you have NVIDIA GPU)
-docker build -t whisper-api:gpu .
+docker build -t transcription-service:gpu .
 ```
 
 ## Running the Service
@@ -49,7 +49,7 @@ docker build -t whisper-api:gpu .
 ### Basic Usage
 ```bash
 docker run -d \
-  --name whisper-service \
+  --name transcription-service \
   -p 8000:8000 \
   -v $(pwd)/uploads:/app/uploads \
   -v $(pwd)/transcripts:/app/transcripts \
@@ -59,7 +59,7 @@ docker run -d \
 ### With GPU Support
 ```bash
 docker run -d \
-  --name whisper-service \
+  --name transcription-service \
   --gpus all \
   -p 8000:8000 \
   -v $(pwd)/uploads:/app/uploads \
@@ -159,18 +159,18 @@ These directories are mounted as Docker volumes to persist data.
 
 ### View Logs
 ```bash
-docker logs -f whisper-service
+docker logs -f transcription-service
 ```
 
 ### Stop Service
 ```bash
-docker stop whisper-service
+docker stop transcription-service
 ```
 
 ### Cleanup
 ```bash
 # Remove container
-docker rm whisper-service
+docker rm transcription-service
 
 # Remove old transcripts
 rm -rf ./transcripts/*
